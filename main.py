@@ -1,4 +1,6 @@
 import pygame
+from app_info import AppInfo
+from utils import generate_list
 
 
 pygame.init()
@@ -6,11 +8,17 @@ pygame.init()
 
 def main():
     clock = pygame.time.Clock()
-    window = pygame.display.set_mode((1000, 800))
+    # Settings for numbers list
+    MIN_VAL = 0
+    MAX_VAL = 100
+    N = 75
+    #####
+
+    app = AppInfo(1000, 800, generate_list(N, MIN_VAL, MAX_VAL))
 
     run = True
     while run:
-        clock.tick(60)
+        clock.tick(app.FPS)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
