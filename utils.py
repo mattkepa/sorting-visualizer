@@ -77,17 +77,82 @@ def draw_controls(app):
 
 
 
-def draw_list(app):
+def draw_list(app, color_pos={}, clear_bg=False):
     """
     Draws rectangle for every number in list
     :param: app: AppInfo - app object with configuration and informations
     """
     array = app.list
 
+    if clear_bg == True:
+        clear_rect = (app.SIDE_PADDING // 2, app.TOP_PADDING, app.width - app.SIDE_PADDING, app.height - app.TOP_PADDING)
+        pygame.draw.rect(app.window, app.BACKGROUND_COLOR, clear_rect)
+
     for i, val in enumerate(array):
         color = app.GRAYSCALE[i % 3]
+        if i in color_pos:
+            color = color_pos[i]
+
         bar_width = app.block_width
         bar_height = (val - app.min_val) * app.block_height  # -> 0 height for min value
         x = app.start_x + i * bar_width
         y = app.height - bar_height
         pygame.draw.rect(app.window, color, (x, y, bar_width, bar_height))
+
+    if clear_bg == True:
+        pygame.display.update()
+
+
+
+
+def bubble_sort(app):
+    array = app.list
+    order = app.sort_order
+
+    for i in range(len(array) - 1):
+        for j in range(len(array) - 1 - i):
+            draw_list(app, {j: app.COLORS['green'], j+1: app.COLORS['red']}, True)
+            if (array[j] > array[j+1] and order == 'ASC') or (array[j] < array[j+1] and order == 'DESC'):
+                array[j], array[j+1] = array[j+1], array[j]
+                yield True
+    return array
+
+
+def insertion_sort(app):
+    array = app.list
+    order = app.sort_order
+
+    for i in range(1, len(array)):
+        j = i
+        while j > 0 and ((array[j] < array[j-1] and order == 'ASC') or (array[j] > array[j-1] and order == 'DESC')):
+            draw_list(app, {j-1: app.COLORS['red'], j: app.COLORS['green']}, True)
+            array[j], array[j-1] = array[j-1], array[j]
+            yield True
+            j -= 1
+    return array
+
+
+def selection_sort(app):
+    array = app.list
+    order = app.sort_order
+
+    if order == 'ASC':
+        for i in range(len(array) - 1):
+            min_idx = i
+            for j in range(i+1, len(array)):
+                draw_list(app, {min_idx: app.COLORS['red'], j: app.COLORS['green']}, True)
+                if array[j] < array[min_idx]:
+                    min_idx = j
+            array[i], array[min_idx] = array[min_idx], array[i]
+            yield True
+    else:
+        for i in range(len(array) - 1):
+            max_idx = i
+            for j in range(i+1, len(array)):
+                draw_list(app, {max_idx: app.COLORS['red'], j: app.COLORS['green']}, True)
+                if array[j] > array[max_idx]:
+                    max_idx = j
+            array[i], array[max_idx] = array[max_idx], array[i]
+            yield True
+
+    return array

@@ -14,6 +14,8 @@ class AppInfo:
     :param width: int - width of program's window in pixels
     :param height: int - height of program's window in pixels
     :param arr: list[int] - list of numbers
+    :param algo_name: str - name of sorting algorithm function to display
+    :param algo_fn: function - sorting function
     """
 
     # CONSTANTS
@@ -36,13 +38,13 @@ class AppInfo:
     FONT_CONTROLS = pygame.font.Font(os.path.join('assets', 'fonts', 'CircularStd-Book.ttf'), 18)
 
 
-    def __init__(self, width, height, arr):
+    def __init__(self, width, height, arr, algo_name, algo_fn):
         self.width = width
         self.height = height
         self.window = pygame.display.set_mode((width, height))
         pygame.display.set_caption('Sorting Algorithms Visualizer')
-        self.algorithm = None
-        self.algo_name = 'Bubble Sort'
+        self.algorithm = algo_fn
+        self.algo_name = algo_name
         self.sort_order = 'ASC'
         self.set_list(arr)
 
@@ -57,5 +59,6 @@ class AppInfo:
     def set_order(self, order):
         self.sort_order = order
 
-    def set_algorithm(self, algo_name):
+    def set_algorithm(self, algo_name, algo_fn):
         self.algo_name = algo_name
+        self.algorithm = algo_fn
