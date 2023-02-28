@@ -1,6 +1,6 @@
 import pygame
 from app_info import AppInfo
-from utils import generate_list
+from utils import generate_list, draw
 
 
 pygame.init()
@@ -19,6 +19,8 @@ def main():
     run = True
     while run:
         clock.tick(app.FPS)
+
+        draw(app)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
