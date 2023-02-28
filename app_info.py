@@ -1,5 +1,9 @@
 import pygame
+import os
 import math
+
+
+pygame.font.init()
 
 
 class AppInfo:
@@ -28,6 +32,8 @@ class AppInfo:
     SIDE_PADDING = 100
     TOP_PADDING = 275
     FPS = 60
+    FONT_TITLE = pygame.font.Font(os.path.join('assets', 'fonts', 'CircularStd-Medium.ttf'), 30)
+    FONT_CONTROLS = pygame.font.Font(os.path.join('assets', 'fonts', 'CircularStd-Book.ttf'), 18)
 
 
     def __init__(self, width, height, arr):
@@ -35,6 +41,9 @@ class AppInfo:
         self.height = height
         self.window = pygame.display.set_mode((width, height))
         pygame.display.set_caption('Sorting Algorithms Visualizer')
+        self.algorithm = None
+        self.algo_name = 'Bubble Sort'
+        self.sort_order = 'ASC'
         self.set_list(arr)
 
     def set_list(self, arr):
@@ -44,3 +53,9 @@ class AppInfo:
         self.block_width = round((self.width - self.SIDE_PADDING) / len(arr))
         self.block_height = math.floor((self.height - self.TOP_PADDING) / (self.max_val - self.min_val))
         self.start_x = self.SIDE_PADDING // 2
+
+    def set_order(self, order):
+        self.sort_order = order
+
+    def set_algorithm(self, algo_name):
+        self.algo_name = algo_name
