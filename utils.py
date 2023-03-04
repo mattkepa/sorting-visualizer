@@ -17,6 +17,7 @@ CONTROLS = {
 def generate_list(n, min_val, max_val):
     """
     Generates a list of numbers of a given length in a given interval and returns the result
+
     :param n: int - lenght of list
     :param min_val: int - min value in interval
     :param max_val: int - max value in interval
@@ -31,6 +32,7 @@ def generate_list(n, min_val, max_val):
 def draw(app):
     """
     Clears the entire screen and redraws everything on it
+
     :param: app: AppInfo - app object with configuration and informations
     """
     app.window.fill(app.BACKGROUND_COLOR)
@@ -44,6 +46,7 @@ def draw(app):
 def draw_controls(app):
     """
     Draws menu with key images and text to control program flow
+
     :param: app: AppInfo - app object with configuration and informations
     """
     # Control - Reset list
@@ -80,6 +83,7 @@ def draw_controls(app):
 def draw_list(app, color_pos={}, clear_bg=False):
     """
     Draws rectangle for every number in list
+
     :param: app: AppInfo - app object with configuration and informations
     """
     array = app.list
@@ -106,6 +110,12 @@ def draw_list(app, color_pos={}, clear_bg=False):
 
 
 def bubble_sort(app):
+    """
+    Implementation of bubble sort algorithm.
+    Draws every step of sorting on the screen
+
+    :param: app: AppInfo - app object with configuration and informations
+    """
     array = app.list
     order = app.sort_order
 
@@ -119,6 +129,12 @@ def bubble_sort(app):
 
 
 def insertion_sort(app):
+    """
+    Implementation of insertion sort algorithm.
+    Draws every step of sorting on the screen
+
+    :param: app: AppInfo - app object with configuration and informations
+    """
     array = app.list
     order = app.sort_order
 
@@ -133,6 +149,12 @@ def insertion_sort(app):
 
 
 def selection_sort(app):
+    """
+    Implementation of selection sort algorithm.
+    Draws every step of sorting on the screen
+
+    :param: app: AppInfo - app object with configuration and informations
+    """
     array = app.list
     order = app.sort_order
 
