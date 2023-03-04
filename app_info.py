@@ -34,8 +34,8 @@ class AppInfo:
     SIDE_PADDING = 100
     TOP_PADDING = 275
     FPS = 60
-    FONT_TITLE = pygame.font.Font(os.path.join('assets', 'fonts', 'CircularStd-Medium.ttf'), 30)
-    FONT_CONTROLS = pygame.font.Font(os.path.join('assets', 'fonts', 'CircularStd-Book.ttf'), 18)
+    FONT_TITLE = pygame.font.Font(os.path.join(os.path.dirname(__file__), 'assets', 'fonts', 'CircularStd-Medium.ttf'), 30)
+    FONT_CONTROLS = pygame.font.Font(os.path.join(os.path.dirname(__file__), 'assets', 'fonts', 'CircularStd-Book.ttf'), 18)
 
 
     def __init__(self, width, height, arr, algo_name, algo_fn):

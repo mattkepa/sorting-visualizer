@@ -3,14 +3,17 @@ import os
 import random
 
 
+basedir = os.path.dirname(__file__)
+
+
 CONTROLS = {
-    'KEY_R': pygame.image.load(os.path.join('assets', 'img', 'key_icon_R.png')),
-    'KEY_SPACE': pygame.image.load(os.path.join('assets', 'img', 'key_icon_SPACE.png')),
-    'KEY_A': pygame.image.load(os.path.join('assets', 'img', 'key_icon_A.png')),
-    'KEY_D': pygame.image.load(os.path.join('assets', 'img', 'key_icon_D.png')),
-    'KEY_B': pygame.image.load(os.path.join('assets', 'img', 'key_icon_B.png')),
-    'KEY_I': pygame.image.load(os.path.join('assets', 'img', 'key_icon_I.png')),
-    'KEY_S': pygame.image.load(os.path.join('assets', 'img', 'key_icon_S.png'))
+    'KEY_R': pygame.image.load(os.path.join(basedir, 'assets', 'img', 'key_icon_R.png')),
+    'KEY_SPACE': pygame.image.load(os.path.join(basedir, 'assets', 'img', 'key_icon_SPACE.png')),
+    'KEY_A': pygame.image.load(os.path.join(basedir, 'assets', 'img', 'key_icon_A.png')),
+    'KEY_D': pygame.image.load(os.path.join(basedir, 'assets', 'img', 'key_icon_D.png')),
+    'KEY_B': pygame.image.load(os.path.join(basedir, 'assets', 'img', 'key_icon_B.png')),
+    'KEY_I': pygame.image.load(os.path.join(basedir, 'assets', 'img', 'key_icon_I.png')),
+    'KEY_S': pygame.image.load(os.path.join(basedir, 'assets', 'img', 'key_icon_S.png'))
 }
 
 
